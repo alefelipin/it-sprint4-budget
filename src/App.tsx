@@ -1,9 +1,9 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import banner from './assets/images/banner.png'
-import './App.css'
+import './App.css';
+import Budget from './components/Budget.tsx';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -12,22 +12,10 @@ function App() {
           <img src={banner} className="banner" width="700" height="300" alt="" />
         </div>
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
+          <h1>Achieve the best quality</h1>
+          <Budget />
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
       </section>
-
-
-
     </>
   )
 }
