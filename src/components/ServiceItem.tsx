@@ -1,13 +1,25 @@
 import type {Service} from '../types/service.ts';
+import ExtraFeature from './ExtraFeature.tsx';
 import './ServiceItem.css';
 
 interface ServiceItemProps {
   service: Service;
   checked: boolean;
   onChange: (checked: boolean) => void;
+  extraPage: number;
+  extraLanguage: number;
+  onPageChange: (extraPage: number) => void;
+  onLanguageChange: (extraLanguage: number) => void;
 }
 
-export default function ServiceItem ( { service, checked, onChange }: ServiceItemProps) {
+export default function ServiceItem ( { 
+  service, 
+  checked, 
+  onChange, 
+  extraPage, 
+  extraLanguage, 
+  onPageChange, 
+  onLanguageChange }: ServiceItemProps) {
 
   return (
     <article className='card'>
@@ -24,11 +36,24 @@ export default function ServiceItem ( { service, checked, onChange }: ServiceIte
           type='checkbox'
           checked={checked}
           onChange={(event) => onChange(event.target.checked)}
-        >
-        </input>
+        />
         <span>
           Add service
         </span>
+        {service.id === 3 && checked === true && ( 
+          <>
+          <ExtraFeature
+            label={"pages"}
+            value={extraPage}
+            onChange={onPageChange}
+          />
+          <ExtraFeature
+            label={"languages"}
+            value={extraLanguage}
+            onChange={onLanguageChange}
+          />
+          </>
+          )} 
       </label> 
     </article> 
   )

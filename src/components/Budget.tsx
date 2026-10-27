@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
-import ExtraFeature from './ExtraFeature.tsx';
 import './Budget.css';
 
 export default function Budget () {
@@ -12,8 +11,6 @@ export default function Budget () {
 
   const [extraPage, setExtraPage] = useState(1);
   const [extraLanguage, setExtraLanguage] = useState(3);
-
-
 
   function isSelected(id: number) {
     if (id === 1) return seo;
@@ -28,9 +25,17 @@ export default function Budget () {
     if ( id === 3) setWeb(checked);
   }
 
+  function handlePageChange(id: number, extraPage: number) {
+     if ( id === 3) setExtraPage(extraPage);
+  }
+
+    function handleLanguageChange(id: number, extraLanguage: number) {
+      if ( id === 3) setExtraLanguage(extraLanguage);
+    }
+
   const total = services.reduce((accum, service) => {
     if (isSelected(service.id)) {
-      return accum +service.price;
+      return accum + service.price;
     }
     return accum;
   }, 0);
@@ -43,25 +48,13 @@ export default function Budget () {
           key={service.id}
           service={service}
           checked={isSelected(service.id)}
-          onChange={(checked) => handleChange(service.id, checked)
-          }
+          onChange={(checked) => handleChange(service.id, checked)}
+          extraPage={extraPage}
+          extraLanguage={extraLanguage} 
+          onPageChange={(extraPage) => handlePageChange(service.id, extraPage) }
+          onLanguageChange={(extraLanguage) => handleLanguageChange(service.id, extraLanguage)}
         />
         ))}
-        
-        {web === true && ( 
-        <>
-        <ExtraFeature
-          label={"pages"}
-          value={extraPage}
-          onChange={setExtraPage}
-        />
-        <ExtraFeature
-          label={"languages"}
-          value={extraLanguage}
-          onChange={setExtraLanguage}
-        />
-        </>
-        )} 
       </div>
       <div className='totalBudget'>
         <div>Estimated price:</div>
