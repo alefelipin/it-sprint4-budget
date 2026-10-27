@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
+import ExtraFeature from './ExtraFeature.tsx';
 import './Budget.css';
 
 export default function Budget () {
@@ -8,6 +9,11 @@ export default function Budget () {
   const [seo, setSeo] = useState(false);
   const [ads, setAds] = useState(false);
   const [web, setWeb] = useState(false);
+
+  const [extraPage, setExtraPage] = useState(1);
+  const [extraLanguage, setExtraLanguage] = useState(3);
+
+
 
   function isSelected(id: number) {
     if (id === 1) return seo;
@@ -41,6 +47,21 @@ export default function Budget () {
           }
         />
         ))}
+        
+        {web === true && ( 
+        <>
+        <ExtraFeature
+          label={"pages"}
+          value={extraPage}
+          onChange={setExtraPage}
+        />
+        <ExtraFeature
+          label={"languages"}
+          value={extraLanguage}
+          onChange={setExtraLanguage}
+        />
+        </>
+        )} 
       </div>
       <div className='totalBudget'>
         <div>Estimated price:</div>

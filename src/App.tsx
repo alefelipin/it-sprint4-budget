@@ -9,7 +9,7 @@ function App() {
     <>
       <section id="center">
         <div className="hero">
-          <img src={banner} className="banner" width="700" height="300" alt="" />
+          <img src={banner} className="banner" width="700" height="300" alt="Achieve the best quality" />
         </div>
         <div>
           <Budget />
