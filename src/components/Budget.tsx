@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
+import Form from './Form.tsx'
 import './Budget.css';
 
 export default function Budget () {
@@ -71,6 +72,9 @@ export default function Budget () {
       <div className='totalBudget'>
         <div>Estimated price:</div>
         <div>{total}€</div>
+      </div>
+      <div>
+        <Form />
       </div>
     </div>
   );
