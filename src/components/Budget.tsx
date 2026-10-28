@@ -32,10 +32,22 @@ export default function Budget () {
     function handleLanguageChange(id: number, extraLanguage: number) {
       if ( id === 3) setExtraLanguage(extraLanguage);
     }
+  
+  const extraPagePrice = 40;
+  const extraLanguagePrice = 40;
+  const noCostPages = 1;
+  const noCostLanguages = 1;
 
   const total = services.reduce((accum, service) => {
-    if (isSelected(service.id)) {
+
+    if (isSelected(service.id) && service.id !== 3) {
       return accum + service.price;
+    }
+    if (isSelected(service.id) && service.id === 3) {
+      return accum + 
+        service.price + 
+        (extraPage - noCostPages) * extraPagePrice + 
+        (extraLanguage - noCostLanguages) * extraLanguagePrice
     }
     return accum;
   }, 0);
