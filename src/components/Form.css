@@ -1,0 +1,13 @@
+.form-container {
+  border-radius: 6px;
+  border: 2px solid #000000;
+  padding: 40px;
+}
+
+.form-button{
+  background-color: #6eb28d;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+}
