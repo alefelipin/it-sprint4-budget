@@ -6,7 +6,6 @@ interface ExtraFeatureProps {
 
 export default function ExtraFeature( {label, value, onChange } : ExtraFeatureProps)  {
 
-
   return(
     <>
     <p>Number of {label}</p>
@@ -24,7 +23,6 @@ export default function ExtraFeature( {label, value, onChange } : ExtraFeaturePr
     >
       +
     </button>
-    
     </> 
   )
 }

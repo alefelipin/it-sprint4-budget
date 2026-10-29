@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
-import Form from './Form.tsx'
+import QuoteForm from './QuoteForm.tsx'
+import type { SubmitEvent } from 'react';
+import type {QuoteFormInputs} from '../types/form.ts'
+import {validateName, validatePhone, validateEmail} from '../utils/validator.ts'
 import './Budget.css';
 
 export default function Budget () {
@@ -9,9 +12,6 @@ export default function Budget () {
   const [seo, setSeo] = useState(false);
   const [ads, setAds] = useState(false);
   const [web, setWeb] = useState(false);
-
-  const [extraPage, setExtraPage] = useState(1);
-  const [extraLanguage, setExtraLanguage] = useState(3);
 
   function isSelected(id: number) {
     if (id === 1) return seo;
@@ -26,13 +26,16 @@ export default function Budget () {
     if ( id === 3) setWeb(checked);
   }
 
+  const [extraPage, setExtraPage] = useState(1);
+  const [extraLanguage, setExtraLanguage] = useState(3);
+
   function handlePageChange(id: number, extraPage: number) {
-     if ( id === 3) setExtraPage(extraPage);
+    if ( id === 3) setExtraPage(extraPage);
   }
 
-    function handleLanguageChange(id: number, extraLanguage: number) {
-      if ( id === 3) setExtraLanguage(extraLanguage);
-    }
+  function handleLanguageChange(id: number, extraLanguage: number) {
+    if ( id === 3) setExtraLanguage(extraLanguage);
+  }
   
   const extraPagePrice = 40;
   const extraLanguagePrice = 40;
@@ -52,6 +55,39 @@ export default function Budget () {
     }
     return accum;
   }, 0);
+
+  const initialClientData: QuoteFormInputs = 
+      {
+        "name": "",
+        "phone": "",
+        "email": "",
+      }
+
+  const [clientData, setClientData] = useState<QuoteFormInputs>(initialClientData)
+
+
+
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  event.preventDefault();
+  }
+
+  function handleNameChange(newName: string) {
+    setClientData((previousData) => {
+      return {...previousData, name: newName}       
+    });
+  }
+
+  function handlePhoneChange(newPhone: string) {
+    setClientData((previousData) => {
+      return {...previousData, phone: newPhone}       
+    });
+  }
+
+  function handleEmailChange(newEmail: string) {
+    setClientData((previousData) => {
+      return {...previousData, email: newEmail}       
+    });
+  }
 
   return (
     <div className='container'>
@@ -74,7 +110,13 @@ export default function Budget () {
         <div>{total}€</div>
       </div>
       <div>
-        <Form />
+        <QuoteForm
+          data={clientData}
+          onSubmit={(event) => handleSubmit(event)}
+          onNameChange={handleNameChange}
+          onPhoneChange={handlePhoneChange}
+          onEmailChange={handleEmailChange}
+         />
       </div>
     </div>
   );
