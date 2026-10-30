@@ -65,10 +65,6 @@ export default function Budget () {
 
   const [clientData, setClientData] = useState<QuoteFormInputs>(initialClientData)
 
-  function handleSubmit() {
-    console.log("Contiene lógica q' s'ejecutará tras validar el form.")
-  }
-
   function handleNameChange(newName: string) {
     setClientData((previousData) => {
       return {...previousData, name: newName}       
@@ -87,8 +83,31 @@ export default function Budget () {
     });
   }
 
+  function handleSubmit() {
+
+    const newQuote: Quote = {
+      id: newQuoteId,
+      date: new Date().toISOString(),
+      data: clientData,
+      seo: seo,
+      ads: ads,
+      web: web,
+      total: total,
+      pages: extraPage,
+      languages: extraLanguage,
+    } 
+  }
+
   const [quotes, setQuotes] = useState<Quote[]>([])
 
+  const newQuoteId = 
+    quotes.reduce((accum, quote) => {
+      if (quote.id > accum) {
+        return quote.id;
+      }
+      return accum;
+    }, 0) + 1;
+  
 
   return (
     <div className='container'>
