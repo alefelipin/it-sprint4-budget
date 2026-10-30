@@ -5,6 +5,7 @@ import QuoteForm from './QuoteForm.tsx'
 import type {QuoteFormInputs} from '../types/form.ts'
 import './Budget.css';
 import ServiceAdded from './ServiceAdded.tsx';
+import type {Quote} from '../types/quote.ts'
 
 export default function Budget () {
 
@@ -85,6 +86,9 @@ export default function Budget () {
       return {...previousData, email: newEmail}       
     });
   }
+
+  const [quotes, setQuotes] = useState<Quote[]>([])
+
 
   return (
     <div className='container'>
