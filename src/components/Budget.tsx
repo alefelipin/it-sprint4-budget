@@ -4,7 +4,6 @@ import ServiceItem from './ServiceItem.tsx';
 import QuoteForm from './QuoteForm.tsx'
 import type { SubmitEvent } from 'react';
 import type {QuoteFormInputs} from '../types/form.ts'
-import {validateName, validatePhone, validateEmail} from '../utils/validator.ts'
 import './Budget.css';
 
 export default function Budget () {
@@ -65,10 +64,8 @@ export default function Budget () {
 
   const [clientData, setClientData] = useState<QuoteFormInputs>(initialClientData)
 
-
-
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-  event.preventDefault();
+    event.preventDefault();
   }
 
   function handleNameChange(newName: string) {

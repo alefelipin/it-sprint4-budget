@@ -1,22 +1,51 @@
+import { useState } from 'react'
 import type { SubmitEvent } from 'react';
 import type {QuoteFormInputs} from '../types/form.ts'
+import {validateName, validatePhone, validateEmail} from '../utils/validator.ts'
 import './QuoteForm.css'
 
 interface QuoteFormProps {
   data: QuoteFormInputs;
-  onSubmit: (event: SubmitEvent<HTMLFormElement>) => void;
+  onSubmit: () => void;
   onNameChange: (newName: string) => void;
   onPhoneChange: (newPhone: string) => void;
   onEmailChange: (newEmail: string) => void;
 }
 
-export default function QuoteForm({data, onSubmit, onNameChange}: QuoteFormProps) {
+export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, onEmailChange}: QuoteFormProps) {
+
+  const [message, setMessage] = useState<string>("")
+
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+  
+  if(!validateName(data.name)) {
+    setMessage("Please enter your name");
+    return;
+  }
+
+  onSubmit()
+
+  if(!validatePhone(data.phone)) {
+    setMessage("Please enter a valid phone number (9 digits)");
+    return;
+  }
+
+  if(!validateEmail(data.email)) {
+    setMessage("Please enter a valid email");
+    return;
+  }
+
+  setMessage("Quote requested successfully")
+
+  }
+
   return (
     <div  className='form-container'>
       <h2>Request a Quote</h2>
       <form 
         className='form'
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
       >
         <input
         type='text'
@@ -41,7 +70,10 @@ export default function QuoteForm({data, onSubmit, onNameChange}: QuoteFormProps
           className='form-button'
         >
           Request a Quote
-        </button>
+        </button><br />
+        <p>
+          {message}
+        </p>
       </form>
     </div>
   ) 
