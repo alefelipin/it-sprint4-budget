@@ -64,8 +64,8 @@ export default function Budget () {
 
   const [clientData, setClientData] = useState<QuoteFormInputs>(initialClientData)
 
-  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function handleSubmit() {
+    console.log("Contiene lógica q' s'ejecutará tras validar el form.")
   }
 
   function handleNameChange(newName: string) {
@@ -109,7 +109,7 @@ export default function Budget () {
       <div>
         <QuoteForm
           data={clientData}
-          onSubmit={(event) => handleSubmit(event)}
+          onSubmit={handleSubmit}
           onNameChange={handleNameChange}
           onPhoneChange={handlePhoneChange}
           onEmailChange={handleEmailChange}

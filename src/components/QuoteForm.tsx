@@ -16,15 +16,13 @@ export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, 
 
   const [message, setMessage] = useState<string>("")
 
-  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  function handleFormSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
   
   if(!validateName(data.name)) {
     setMessage("Please enter your name");
     return;
   }
-
-  onSubmit()
 
   if(!validatePhone(data.phone)) {
     setMessage("Please enter a valid phone number (9 digits)");
@@ -36,7 +34,9 @@ export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, 
     return;
   }
 
-  setMessage("Quote requested successfully")
+  setMessage("Quote requested successfully");
+
+  onSubmit()
 
   }
 
@@ -45,7 +45,7 @@ export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, 
       <h2>Request a Quote</h2>
       <form 
         className='form'
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
       >
         <input
         type='text'
