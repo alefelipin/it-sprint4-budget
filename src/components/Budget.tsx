@@ -2,9 +2,9 @@ import { useState } from 'react'
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
 import QuoteForm from './QuoteForm.tsx'
-import type { SubmitEvent } from 'react';
 import type {QuoteFormInputs} from '../types/form.ts'
 import './Budget.css';
+import ServiceAdded from './ServiceAdded.tsx';
 
 export default function Budget () {
 
@@ -114,6 +114,18 @@ export default function Budget () {
           onPhoneChange={handlePhoneChange}
           onEmailChange={handleEmailChange}
          />
+      </div>
+      <div>
+        <ServiceAdded
+          data={clientData}
+          seo={seo}
+          ads={ads}
+          web={web}
+          pages={extraPage}
+          languages={extraLanguage}
+          total={total}
+        
+        />
       </div>
     </div>
   );
