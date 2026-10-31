@@ -23,38 +23,40 @@ export default function ServiceItem ( {
 
   return (
     <article className='card'>
-      <div>
-      <h2>{service.service}</h2>
-      <p>{service.description}</p>
+      <div className='card-left'>
+        <h2 className='service-card-title'>{service.service}</h2>
+        <p className='service-card-description'>{service.description}</p>
       </div>
-      <div>
-        <span className='price'>{service.price}</span>
-        <span className='currency'>{service.currency}</span>
+      <div className='card-center'>
+        <span className='service-card-price'>{service.price}</span>
+        <span className='service-card-currency'>{service.currency}</span>
       </div>
-      <label>
-        <input
-          type='checkbox'
-          checked={checked}
-          onChange={(event) => onChange(event.target.checked)}
-        />
-        <span>
-          Add service
-        </span>
-        {service.id === 3 && checked === true && ( 
-          <>
-          <ExtraFeature
-            label={"pages"}
-            value={extraPage}
-            onChange={onPageChange}
+      <div className='card-right'>
+        <label>
+          <input
+            type='checkbox'
+            checked={checked}
+            onChange={(event) => onChange(event.target.checked)}
           />
-          <ExtraFeature
-            label={"languages"}
-            value={extraLanguage}
-            onChange={onLanguageChange}
-          />
-          </>
+          <span className='service-card-check'>
+            Add service
+          </span>
+          {service.id === 3 && checked === true && ( 
+            <>
+            <ExtraFeature
+              label={"pages"}
+              value={extraPage}
+              onChange={onPageChange}
+            />
+            <ExtraFeature
+              label={"languages"}
+              value={extraLanguage}
+              onChange={onLanguageChange}
+            />
+            </>
           )} 
-      </label> 
+        </label> 
+      </div>  
     </article> 
   )
 }

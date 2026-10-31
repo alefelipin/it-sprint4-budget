@@ -1,4 +1,26 @@
 .card {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr auto;
+  place-items: center;
   border-radius: 6px;
   border: 2px solid #000000;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 10px;
 }
+
+.service-card-title {
+  font-size: 1.2rem;
+}
+
+.service-card-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.service-card-currency {
+  font-size: 0.8rem;
+  margin-left: 3px;
+
+}
+
