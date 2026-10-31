@@ -2,40 +2,44 @@ import './ServiceAdded.css'
 import type {QuoteFormInputs} from '../types/form.ts'
 
 interface ServiceAddedProps {
-  data: QuoteFormInputs;
+  clientData: QuoteFormInputs;
   seo: boolean;
   ads: boolean;
   web: boolean;
   total: number;
-  pages: number;
-  languages: number;
+  extraPage: number;
+  extraLanguage: number;
 }
 
-export default function ServiceAdded({data, seo, ads, web, total, pages, languages}: ServiceAddedProps) {
+export default function ServiceAdded({clientData, seo, ads, web, total, extraPage, extraLanguage}: ServiceAddedProps) {
 
   return (
     <div className="quote-container">
-      <h2>
-        Quotes in progress
+      <div>
+        <h2>
+        Quotes in progress:
       </h2>
-        <h3>Details:</h3> 
-      <div>
-        <p>{data.name}</p>
-        <p>{data.email}</p>
-        <p>{data.phone}</p>
       </div>
-      <div>
-        <p>Services Requested:</p>
-        <ul>
-          {seo && <li>Seo</li>}
-          {ads && <li>Ads</li>}
-          {web && <li>Web ({pages} pages, {languages} languages)</li>}
-        </ul>    
-      </div>
-      <div>
-        <p>Total</p>
-        <p>{total}</p>
-      </div>
+      <div className='quote-card'>
+        <div className='quote-clientData'>
+          <p className='quote-name'>{clientData.name}</p>
+          <p className='quote-info'>{clientData.email}</p>
+          <p className='quote-info'>{clientData.phone}</p>
+        </div>
+        <div className='quote-services'>
+          <p>Services Requested:</p>
+          <ul>
+            {seo && <li>Seo</li>}
+            {ads && <li>Ads</li>}
+            {web && <li>Web ({extraPage} pages, {extraLanguage} languages)</li>}
+          </ul>    
+        </div>
+        <div className='quote-total'>
+          <p className='quote-total-label'>Total:</p>
+          <p className='quote-total-price'>{total}<span>€</span></p>
+          
+        </div>
+      </div>  
     </div>
   )
 }

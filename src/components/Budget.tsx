@@ -83,13 +83,9 @@ export default function Budget () {
     });
   }
 
-  function handleSubmit() {
-
-    
-
-    
-
     const [quotes, setQuotes] = useState<Quote[]>([])
+
+  function handleSubmit() {
 
     const newQuoteId = 
       quotes.reduce((accum, quote) => {
@@ -102,23 +98,18 @@ export default function Budget () {
     const newQuote: Quote = {
       id: newQuoteId,
       date: new Date().toISOString(),
-      data: clientData,
+      clientData: clientData,
       seo: seo,
       ads: ads,
       web: web,
       total: total,
-      pages: extraPage,
-      languages: extraLanguage,
+      extraPage: extraPage,
+      extraLanguage: extraLanguage,
     }
 
     setQuotes([...quotes,newQuote]);
-
-    
+ 
   }
-
-
-
-  
 
   return (
     <div className='container'>
@@ -150,16 +141,18 @@ export default function Budget () {
          />
       </div>
       <div>
+        {quotes.map((quote) => (
         <ServiceAdded
-          data={clientData}
-          seo={seo}
-          ads={ads}
-          web={web}
-          pages={extraPage}
-          languages={extraLanguage}
-          total={total}
-        
+          key={quote.id}
+          clientData={quote.clientData}
+          seo={quote.seo}
+          ads={quote.ads}
+          web={quote.web}
+          extraPage={quote.extraPage}
+          extraLanguage={quote.extraLanguage}
+          total={quote.total}     
         />
+        ))}
       </div>
     </div>
   );
