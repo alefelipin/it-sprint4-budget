@@ -85,6 +85,20 @@ export default function Budget () {
 
   function handleSubmit() {
 
+    
+
+    
+
+    const [quotes, setQuotes] = useState<Quote[]>([])
+
+    const newQuoteId = 
+      quotes.reduce((accum, quote) => {
+        if (quote.id > accum) {
+          return quote.id;
+        }
+        return accum;
+      }, 0) + 1;
+
     const newQuote: Quote = {
       id: newQuoteId,
       date: new Date().toISOString(),
@@ -95,18 +109,15 @@ export default function Budget () {
       total: total,
       pages: extraPage,
       languages: extraLanguage,
-    } 
+    }
+
+    setQuotes([...quotes,newQuote]);
+
+    
   }
 
-  const [quotes, setQuotes] = useState<Quote[]>([])
 
-  const newQuoteId = 
-    quotes.reduce((accum, quote) => {
-      if (quote.id > accum) {
-        return quote.id;
-      }
-      return accum;
-    }, 0) + 1;
+
   
 
   return (
