@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react';
 import services from '../assets/data/services.json';
 import ServiceItem from './ServiceItem.tsx';
 import QuoteForm from './QuoteForm.tsx'
@@ -83,7 +84,23 @@ export default function Budget () {
     });
   }
 
-    const [quotes, setQuotes] = useState<Quote[]>([])
+    const [quotes, setQuotes] = useState<Quote[]>( () => {
+
+      const storedQuotes = localStorage.getItem("quotes");
+
+      if (storedQuotes !== null) {
+        const parsedQuotes = JSON.parse(storedQuotes);
+        return parsedQuotes;
+      } else { 
+        return [];
+      }
+    });
+
+    useEffect( () => {
+      localStorage.setItem("quotes", JSON.stringify(quotes));
+    }, [quotes])
+
+    
 
   function handleSubmit() {
 
@@ -108,8 +125,11 @@ export default function Budget () {
     }
 
     setQuotes([...quotes,newQuote]);
- 
-  }
+
+    }
+
+    
+
 
   return (
     <div className='container'>
@@ -127,9 +147,12 @@ export default function Budget () {
         />
         ))}
       </div>
-      <div className='totalBudget'>
-        <div>Estimated price:</div>
-        <div>{total}€</div>
+      <div className='total-budget'>
+        <div className='total-budget-text'>Estimated price:</div>
+        <div className='total-budget-value'>
+          <div className='total-budget-price'>{total}</div>
+          <span className='total-budget-currency'>€</span>
+        </div>
       </div>
       <div>
         <QuoteForm
