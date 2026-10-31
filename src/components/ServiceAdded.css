@@ -1,5 +1,42 @@
 .quote-container {
+  display: flex;
+  flex-direction: column;
   border-radius: 6px;
   border: 2px solid #000000;
   padding: 40px;
+}
+
+.quote-card {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 20px; 
+}
+
+.quote-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.quote-info{
+  font-size: 13px;
+  color: #777777;
+}
+
+.quote-services {
+  font-size: 15px;
+}
+
+.quote-total {
+  text-align: right;
+}
+
+.quote-total-label {
+  font-size: 15px;
+  color: #777777;
+}
+
+.quote-total-price {
+  font-size: 30px;
+  font-weight: 800;
 }
