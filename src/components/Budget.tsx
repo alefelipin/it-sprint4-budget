@@ -38,10 +38,10 @@ export default function Budget () {
     if ( id === 3) setExtraLanguage(extraLanguage);
   }
   
-  const extraPagePrice = 40;
-  const extraLanguagePrice = 40;
+  const extraPagePrice = 30;
+  const extraLanguagePrice = 30;
   const noCostPages = 1;
-  const noCostLanguages = 1;
+  const noCostLanguages = 0;
 
   const total = services.reduce((accum, service) => {
 
@@ -133,7 +133,7 @@ export default function Budget () {
 
   return (
     <div className='container'>
-      <div>
+      <div className='service-item'>
         {services.map((service) => (
         <ServiceItem
           key={service.id}

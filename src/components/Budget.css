@@ -1,4 +1,41 @@
 .container {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
+
+.total-budget {
+  display: flex;
+  justify-content: right;
+  align-items:baseline;
+  padding: 30px;
+  gap: 30px;
+
+}
+
+.total-budget-value {
+  display: flex;
+  gap: 2.5px;
+  align-items: baseline;                      
+}
+
+.total-budget-text {
+  font-weight: bold;
+  color: #000000;
+}
+
+.total-budget-price {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.total-budget-currency {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+
+
+
 
