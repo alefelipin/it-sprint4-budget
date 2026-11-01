@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+.service-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .total-budget {
   display: flex;
   justify-content: right;

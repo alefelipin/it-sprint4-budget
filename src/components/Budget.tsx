@@ -100,8 +100,6 @@ export default function Budget () {
       localStorage.setItem("quotes", JSON.stringify(quotes));
     }, [quotes])
 
-    
-
   function handleSubmit() {
 
     const newQuoteId = 
@@ -127,9 +125,6 @@ export default function Budget () {
     setQuotes([...quotes,newQuote]);
 
     }
-
-    
-
 
   return (
     <div className='container'>
@@ -164,6 +159,9 @@ export default function Budget () {
          />
       </div>
       <div>
+        <h2>
+        Quotes in progress:
+        </h2>
         {quotes.map((quote) => (
         <ServiceAdded
           key={quote.id}

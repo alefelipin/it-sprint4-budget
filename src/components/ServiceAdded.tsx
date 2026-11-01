@@ -15,11 +15,6 @@ export default function ServiceAdded({clientData, seo, ads, web, total, extraPag
 
   return (
     <div className="quote-container">
-      <div>
-        <h2>
-        Quotes in progress:
-      </h2>
-      </div>
       <div className='quote-card'>
         <div className='quote-clientData'>
           <p className='quote-name'>{clientData.name}</p>
@@ -36,9 +31,11 @@ export default function ServiceAdded({clientData, seo, ads, web, total, extraPag
         </div>
         <div className='quote-total'>
           <p className='quote-total-label'>Total:</p>
-          <p className='quote-total-price'>{total}<span>€</span></p>
-          
-        </div>
+          <div className='quote-total-value'>
+            <span className='quote-total-price'>{total}</span>
+            <span className='quote-total-currency'>€</span>
+          </div>
+        </div> 
       </div>  
     </div>
   )
