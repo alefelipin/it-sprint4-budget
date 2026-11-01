@@ -60,13 +60,13 @@ export default function QuoteForm({data, seo, ads, web, onSubmit, onNameChange, 
           type='text'
           value={data.name}
           onChange={(event) => onNameChange(event.target.value)}
-          placeholder='Name'
+          placeholder='Full name'
           />
           <input
           type='text'
           value={data.phone}
           onChange={(event) => onPhoneChange(event.target.value)}
-          placeholder='Phone Number (+34)'
+          placeholder='Phone number'
           />
           <input
           type='email'

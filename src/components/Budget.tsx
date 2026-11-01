@@ -162,9 +162,7 @@ export default function Budget () {
          />
       </div>
       <div>
-        <h2>
-        Quotes in progress:
-        </h2>
+        {quotes.length !== 0 && <h2>Quotes in progress:</h2>}
         {quotes.map((quote) => (
         <ServiceAdded
           key={quote.id}
