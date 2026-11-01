@@ -41,6 +41,7 @@ export default function ServiceItem ( {
           <span className='service-card-check'>
             Add service
           </span>
+        </label> 
           {service.id === 3 && checked === true && ( 
             <>
             <ExtraFeature
@@ -55,7 +56,6 @@ export default function ServiceItem ( {
             />
             </>
           )} 
-        </label> 
       </div>  
     </article> 
   )
