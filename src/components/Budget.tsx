@@ -127,6 +127,12 @@ export default function Budget () {
 
     }
 
+    const [searchText, setSearchText] = useState<string>("");
+    
+    const filteredQuotes = quotes.filter((quote) => { 
+        return quote.clientData.name.toLowerCase().includes(searchText.toLowerCase())
+      })
+
   return (
     <div className='container'>
       <div className='service-item'>
@@ -166,21 +172,23 @@ export default function Budget () {
         {quotes.length !== 0 && 
         <h2>Quotes in progress:</h2>
         }
-        {quotes.map((quote) => (
-        <ServiceAdded
-          key={quote.id}
-          clientData={quote.clientData}
-          seo={quote.seo}
-          ads={quote.ads}
-          web={quote.web}
-          extraPage={quote.extraPage}
-          extraLanguage={quote.extraLanguage}
-          total={quote.total}     
+        <QuoteSearch
+          searchText={searchText}
+          onSearchChange={setSearchText}
         />
+        {filteredQuotes.map((filteredQuote) => (
+          <ServiceAdded
+            key={filteredQuote.id}
+            clientData={filteredQuote.clientData}
+            seo={filteredQuote.seo}
+            ads={filteredQuote.ads}
+            web={filteredQuote.web}
+            extraPage={filteredQuote.extraPage}
+            extraLanguage={filteredQuote.extraLanguage}
+            total={filteredQuote.total}     
+          />
         ))}
       </div>
-      <QuoteSearch 
-        />
     </div>       
   );
 }
