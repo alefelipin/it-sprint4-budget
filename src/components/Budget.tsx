@@ -7,6 +7,7 @@ import type {QuoteFormInputs} from '../types/form.ts'
 import './Budget.css';
 import ServiceAdded from './ServiceAdded.tsx';
 import type {Quote} from '../types/quote.ts'
+import QuoteSearch from './QuoteSearch.tsx';
 
 export default function Budget () {
 
@@ -162,7 +163,9 @@ export default function Budget () {
          />
       </div>
       <div>
-        {quotes.length !== 0 && <h2>Quotes in progress:</h2>}
+        {quotes.length !== 0 && 
+        <h2>Quotes in progress:</h2>
+        }
         {quotes.map((quote) => (
         <ServiceAdded
           key={quote.id}
@@ -176,7 +179,9 @@ export default function Budget () {
         />
         ))}
       </div>
-    </div>
+      <QuoteSearch 
+        />
+    </div>       
   );
 }
 

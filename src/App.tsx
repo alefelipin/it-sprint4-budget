@@ -1,4 +1,3 @@
-
 import banner from './assets/images/banner.png'
 import './App.css';
 import Budget from './components/Budget.tsx';
