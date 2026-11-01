@@ -6,18 +6,26 @@ import './QuoteForm.css'
 
 interface QuoteFormProps {
   data: QuoteFormInputs;
+  seo : boolean;
+  ads: boolean;
+  web: boolean;
   onSubmit: () => void;
   onNameChange: (newName: string) => void;
   onPhoneChange: (newPhone: string) => void;
   onEmailChange: (newEmail: string) => void;
 }
 
-export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, onEmailChange}: QuoteFormProps) {
+export default function QuoteForm({data, seo, ads, web, onSubmit, onNameChange, onPhoneChange, onEmailChange}: QuoteFormProps) {
 
   const [message, setMessage] = useState<string>("")
 
   function handleFormSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
+
+  if(!seo && !ads && !web) {
+    setMessage("Please select at least one service");
+    return;
+  }
   
   if(!validateName(data.name)) {
     setMessage("Please enter your name");

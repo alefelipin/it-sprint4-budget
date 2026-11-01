@@ -152,6 +152,9 @@ export default function Budget () {
       <div>
         <QuoteForm
           data={clientData}
+          seo={seo}
+          ads={ads}
+          web={web}
           onSubmit={handleSubmit}
           onNameChange={handleNameChange}
           onPhoneChange={handlePhoneChange}
