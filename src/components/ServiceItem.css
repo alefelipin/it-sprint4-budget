@@ -1,4 +1,43 @@
 .card {
-  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr 0.6fr;
+  align-items: center;
+  border-radius: 16px;
   border: 2px solid #000000;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 24px 30px;
+  box-shadow: 0 4px 14px #0000001a;
 }
+
+.card-left {
+  justify-self: start;
+}
+
+.card-center {
+  justify-self: center;
+}
+
+.card-right {
+  justify-self: end;
+}
+
+.service-card-title {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.service-card-description {
+  margin: 0;
+}
+
+.service-card-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.service-card-currency {
+  font-size: 0.8rem;
+  margin-left: 3px;
+}
+

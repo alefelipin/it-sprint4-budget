@@ -1,0 +1,77 @@
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: none;
+  padding: 24px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 14px #0000001A;
+  margin-bottom: 20px;
+}
+
+.quote-clientData {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quote-clientData p {
+  margin: 0;
+}
+
+.quote-card {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr auto;
+  align-items: center;
+  gap: 20px; 
+}
+
+.quote-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.quote-info{
+  font-size: 0.8rem;
+  color: #777777;
+}
+
+.quote-services {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.quote-services p {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.quote-services ul {
+  font-size: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 18px;
+}
+
+.quote-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.quote-total-label {
+  font-size: 0.8rem;
+  color: #777777;
+  margin: 0;
+}
+
+.quote-total-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.quote-total-currency {
+  font-size: 0.8rem;
+  margin-left: 3px;
+}
