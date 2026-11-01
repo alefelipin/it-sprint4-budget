@@ -47,30 +47,32 @@ export default function QuoteForm({data, onSubmit, onNameChange, onPhoneChange, 
         className='form'
         onSubmit={handleFormSubmit}
       >
-        <input
-        type='text'
-        value={data.name}
-        onChange={(event) => onNameChange(event.target.value)}
-        placeholder='Name'
-        />
-        <input
-        type='text'
-        value={data.phone}
-        onChange={(event) => onPhoneChange(event.target.value)}
-        placeholder='Phone Number (+34)'
-        />
-        <input
-        type='email'
-        value={data.email}
-        onChange={(event) => onEmailChange(event.target.value)}
-        placeholder='Email'
-        />
-        <button
-          type='submit'
-          className='form-button'
-        >
-          Request a Quote
-        </button><br />
+        <div className='form-fields'>
+          <input
+          type='text'
+          value={data.name}
+          onChange={(event) => onNameChange(event.target.value)}
+          placeholder='Name'
+          />
+          <input
+          type='text'
+          value={data.phone}
+          onChange={(event) => onPhoneChange(event.target.value)}
+          placeholder='Phone Number (+34)'
+          />
+          <input
+          type='email'
+          value={data.email}
+          onChange={(event) => onEmailChange(event.target.value)}
+          placeholder='Email'
+          />
+          <button
+            type='submit'
+            className='form-button'
+          >
+            Request a Quote
+          </button>
+        </div>
         <p>
           {message}
         </p>
