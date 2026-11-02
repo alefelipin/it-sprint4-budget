@@ -14,6 +14,7 @@ export default function QuoteSearch({searchText, onSearchChange, onSortChange}: 
       <div className='search-box'>
         <input
         type='search'
+        aria-label="Search quotes by client name"
         value={searchText}
         onChange={(event) => onSearchChange(event.target.value)}
         className="search-input"

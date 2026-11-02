@@ -14,6 +14,7 @@ export default function ExtraFeature( {label, value, onChange } : ExtraFeaturePr
       <div className="feature-counter">
         <button
         type="button"
+        aria-label={`Decrease number of ${label}`}
         onClick={()=> onChange(value - 1)} 
         disabled= {value <= 1}
         >
@@ -22,6 +23,7 @@ export default function ExtraFeature( {label, value, onChange } : ExtraFeaturePr
         <span>{value}</span>
         <button
           type="button"
+          aria-label={`Increase number of ${label}`}
           onClick={()=> onChange(value + 1)}
         >
           +

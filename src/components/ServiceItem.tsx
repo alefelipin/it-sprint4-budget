@@ -35,6 +35,7 @@ export default function ServiceItem ( {
         <label>
           <input
             type='checkbox'
+            aria-label={`Add ${service.service} service`}
             checked={checked}
             onChange={(event) => onChange(event.target.checked)}
           />

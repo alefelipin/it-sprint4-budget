@@ -58,18 +58,21 @@ export default function QuoteForm({data, seo, ads, web, onSubmit, onNameChange, 
         <div className='form-fields'>
           <input
           type='text'
+          aria-label="Full name"
           value={data.name}
           onChange={(event) => onNameChange(event.target.value)}
           placeholder='Full name'
           />
           <input
           type='text'
+          aria-label="Phone number"
           value={data.phone}
           onChange={(event) => onPhoneChange(event.target.value)}
           placeholder='Phone number'
           />
           <input
           type='email'
+          aria-label="Email"
           value={data.email}
           onChange={(event) => onEmailChange(event.target.value)}
           placeholder='Email'
@@ -81,7 +84,8 @@ export default function QuoteForm({data, seo, ads, web, onSubmit, onNameChange, 
             Request a Quote
           </button>
         </div>
-        <p 
+        <p
+        role="status" 
         className={
           message === "Quote requested successfully" ? "form-success" : "form-error"
         }>
