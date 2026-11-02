@@ -1,5 +1,6 @@
 import './ServiceAdded.css'
 import type {QuoteFormInputs} from '../types/form.ts'
+import type {Quote} from '../types/quote.ts'
 
 interface ServiceAddedProps {
   clientData: QuoteFormInputs;
@@ -10,13 +11,18 @@ interface ServiceAddedProps {
   extraPage: number;
   extraLanguage: number;
   date: string;
+  quote: Quote;
+  onShare: (quote: Quote) => void;
 }
 
-export default function ServiceAdded({clientData, seo, ads, web, total, extraPage, extraLanguage, date}: ServiceAddedProps) {
+export default function ServiceAdded({clientData, seo, ads, web, total, extraPage, extraLanguage, date, quote, onShare}: ServiceAddedProps) {
 
   return (
     <div className="quote-container">
-      <div className='quote-card'>
+      <div 
+        className='quote-card'
+        onClick={() => onShare(quote)}
+      >
         <div className='quote-clientData'>
           <p className='quote-name'>{clientData.name}</p>
           <p className='quote-info'>{clientData.email}</p>
