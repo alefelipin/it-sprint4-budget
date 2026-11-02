@@ -1,7 +1,6 @@
 import './QuoteSearch.css';
 import search from '../assets/images/search-icon.png'
 
-
 interface QuoteSearchProps {
   searchText: string;
   onSearchChange: (newSearchText: string) => void;
@@ -18,7 +17,7 @@ export default function QuoteSearch({searchText, onSearchChange, onSortChange}: 
         value={searchText}
         onChange={(event) => onSearchChange(event.target.value)}
         className="search-input"
-        placeholder="Search"
+        placeholder="Search by name"
         />
         <img 
         src={search} 

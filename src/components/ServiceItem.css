@@ -3,11 +3,15 @@
   grid-template-columns: 1.5fr 0.7fr 0.6fr;
   align-items: center;
   border-radius: 16px;
-  border: 2px solid #000000;
+  border: 2px solid #d1d5db;
   font-size: 0.8rem;
   font-weight: 500;
   padding: 24px 30px;
   box-shadow: 0 4px 14px #0000001a;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px #399c7c;
 }
 
 .card-left {

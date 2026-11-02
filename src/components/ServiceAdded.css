@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  border: none;
+  border: 2px solid #d1d5db;
   padding: 24px;
   background-color: #ffffff;
   box-shadow: 0 4px 14px #0000001A;
   margin-bottom: 20px;
+}
+
+.quote-container:hover {
+  box-shadow: 0 4px 14px #399c7c;
 }
 
 .quote-clientData {
