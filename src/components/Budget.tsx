@@ -127,11 +127,27 @@ export default function Budget () {
 
     }
 
-    const [searchText, setSearchText] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>("");
     
-    const filteredQuotes = quotes.filter((quote) => { 
-        return quote.clientData.name.toLowerCase().includes(searchText.toLowerCase())
-      })
+  const filteredQuotes = quotes.filter((quote) => { 
+    return quote.clientData.name.toLowerCase().includes(searchText.toLowerCase())
+  });
+
+  const [sortBy, setSortBy] = useState<string>("date");
+  
+  const filteredQuotesSorted = [...filteredQuotes]
+
+  if(sortBy === "date") { 
+    filteredQuotesSorted.sort((a,b) => b.date.localeCompare(a.date)) 
+  }
+
+  if(sortBy === "amount") { 
+    filteredQuotesSorted.sort((a,b) => b.total - a.total)
+  }
+
+  if(sortBy === "name") { 
+    filteredQuotesSorted.sort((a,b) => a.clientData.name.localeCompare(b.clientData.name)) 
+  }
 
   return (
     <div className='container'>
@@ -175,17 +191,19 @@ export default function Budget () {
         <QuoteSearch
           searchText={searchText}
           onSearchChange={setSearchText}
+          onSortChange={setSortBy}
         />
-        {filteredQuotes.map((filteredQuote) => (
+        {filteredQuotesSorted.map((filteredQuoteSorted) => (
           <ServiceAdded
-            key={filteredQuote.id}
-            clientData={filteredQuote.clientData}
-            seo={filteredQuote.seo}
-            ads={filteredQuote.ads}
-            web={filteredQuote.web}
-            extraPage={filteredQuote.extraPage}
-            extraLanguage={filteredQuote.extraLanguage}
-            total={filteredQuote.total}     
+            key={filteredQuoteSorted.id}
+            clientData={filteredQuoteSorted.clientData}
+            seo={filteredQuoteSorted.seo}
+            ads={filteredQuoteSorted.ads}
+            web={filteredQuoteSorted.web}
+            extraPage={filteredQuoteSorted.extraPage}
+            extraLanguage={filteredQuoteSorted.extraLanguage}
+            total={filteredQuoteSorted.total}
+            date={filteredQuoteSorted.date}    
           />
         ))}
       </div>

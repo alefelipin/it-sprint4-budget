@@ -5,9 +5,10 @@ import search from '../assets/images/search-icon.png'
 interface QuoteSearchProps {
   searchText: string;
   onSearchChange: (newSearchText: string) => void;
+  onSortChange: (newSortBy: string) => void;
 }
 
-export default function QuoteSearch({searchText, onSearchChange}: QuoteSearchProps) {
+export default function QuoteSearch({searchText, onSearchChange, onSortChange}: QuoteSearchProps) {
 
   return (
     <div className='container-search'>
@@ -29,18 +30,21 @@ export default function QuoteSearch({searchText, onSearchChange}: QuoteSearchPro
         <button
           className="search-button"
           type='button'
+          onClick={() => onSortChange("date")}
         >
         Date
         </button>
         <button 
           className="search-button"
           type='button'
+          onClick={() => onSortChange("amount")}
         >
           Amount
         </button>
         <button 
           className="search-button"
           type='button'
+          onClick={() => onSortChange("name")}
         >
           Name
         </button>
