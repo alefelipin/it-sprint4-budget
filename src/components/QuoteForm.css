@@ -53,3 +53,11 @@
   margin-top: 10px;
   margin-bottom: 0;
 }
+
+.form p.form-success {
+  color: #008000;
+}
+
+.form p.form-error {
+  color: #FF2C2C;
+}

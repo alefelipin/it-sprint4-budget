@@ -81,7 +81,10 @@ export default function QuoteForm({data, seo, ads, web, onSubmit, onNameChange, 
             Request a Quote
           </button>
         </div>
-        <p>
+        <p 
+        className={
+          message === "Quote requested successfully" ? "form-success" : "form-error"
+        }>
           {message}
         </p>
       </form>
