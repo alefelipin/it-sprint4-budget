@@ -7,6 +7,7 @@ import type {QuoteFormInputs} from '../types/form.ts'
 import './Budget.css';
 import ServiceAdded from './ServiceAdded.tsx';
 import type {Quote} from '../types/quote.ts'
+import QuoteSearch from './QuoteSearch.tsx';
 
 export default function Budget () {
 
@@ -126,6 +127,28 @@ export default function Budget () {
 
     }
 
+  const [searchText, setSearchText] = useState<string>("");
+    
+  const filteredQuotes = quotes.filter((quote) => { 
+    return quote.clientData.name.toLowerCase().includes(searchText.toLowerCase())
+  });
+
+  const [sortBy, setSortBy] = useState<string>("date");
+  
+  const filteredQuotesSorted = [...filteredQuotes]
+
+  if(sortBy === "date") { 
+    filteredQuotesSorted.sort((a,b) => b.date.localeCompare(a.date)) 
+  }
+
+  if(sortBy === "amount") { 
+    filteredQuotesSorted.sort((a,b) => b.total - a.total)
+  }
+
+  if(sortBy === "name") { 
+    filteredQuotesSorted.sort((a,b) => a.clientData.name.localeCompare(b.clientData.name)) 
+  }
+
   return (
     <div className='container'>
       <div className='service-item'>
@@ -162,21 +185,29 @@ export default function Budget () {
          />
       </div>
       <div>
-        {quotes.length !== 0 && <h2>Quotes in progress:</h2>}
-        {quotes.map((quote) => (
-        <ServiceAdded
-          key={quote.id}
-          clientData={quote.clientData}
-          seo={quote.seo}
-          ads={quote.ads}
-          web={quote.web}
-          extraPage={quote.extraPage}
-          extraLanguage={quote.extraLanguage}
-          total={quote.total}     
+        {quotes.length !== 0 && 
+        <h2>Quotes in progress:</h2>
+        }
+        <QuoteSearch
+          searchText={searchText}
+          onSearchChange={setSearchText}
+          onSortChange={setSortBy}
         />
+        {filteredQuotesSorted.map((filteredQuoteSorted) => (
+          <ServiceAdded
+            key={filteredQuoteSorted.id}
+            clientData={filteredQuoteSorted.clientData}
+            seo={filteredQuoteSorted.seo}
+            ads={filteredQuoteSorted.ads}
+            web={filteredQuoteSorted.web}
+            extraPage={filteredQuoteSorted.extraPage}
+            extraLanguage={filteredQuoteSorted.extraLanguage}
+            total={filteredQuoteSorted.total}
+            date={filteredQuoteSorted.date}    
+          />
         ))}
       </div>
-    </div>
+    </div>       
   );
 }
 

@@ -9,9 +9,10 @@ interface ServiceAddedProps {
   total: number;
   extraPage: number;
   extraLanguage: number;
+  date: string;
 }
 
-export default function ServiceAdded({clientData, seo, ads, web, total, extraPage, extraLanguage}: ServiceAddedProps) {
+export default function ServiceAdded({clientData, seo, ads, web, total, extraPage, extraLanguage, date}: ServiceAddedProps) {
 
   return (
     <div className="quote-container">
@@ -20,6 +21,13 @@ export default function ServiceAdded({clientData, seo, ads, web, total, extraPag
           <p className='quote-name'>{clientData.name}</p>
           <p className='quote-info'>{clientData.email}</p>
           <p className='quote-info'>{clientData.phone}</p>
+          <p className='quote-info'>Requested: {new Date(date).toLocaleDateString('en-UK', 
+            {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+            })}
+          </p>
         </div>
         <div className='quote-services'>
           <p>Services Requested:</p>
