@@ -149,7 +149,43 @@ export default function Budget () {
     filteredQuotesSorted.sort((a,b) => a.clientData.name.localeCompare(b.clientData.name)) 
   }
 
+  const params = new URLSearchParams(window.location.search);
+  const quoteParam = params.get("quote");
+
+  const sharedQuote: Quote | null  = quoteParam ? JSON.parse(quoteParam) : null;
+
+
+  function handleShare(quote: Quote) {
+    const encodedQuote = encodeURIComponent(JSON.stringify(quote));
+    const shareUrl = `${window.location.origin}/?quote=${encodedQuote}`;
+    window.location.assign(shareUrl);
+  }
+
+    if (sharedQuote !== null) {
+      return (
+        <div className="shared-quote">
+          <h2>Shared Quote</h2>
+      
+          <ServiceAdded
+            key={sharedQuote.id}
+            quote={sharedQuote}
+            clientData={sharedQuote.clientData}
+            seo={sharedQuote.seo}
+            ads={sharedQuote.ads}
+            web={sharedQuote.web}
+            extraPage={sharedQuote.extraPage}
+            extraLanguage={sharedQuote.extraLanguage}
+            total={sharedQuote.total}
+            date={sharedQuote.date}
+            onShare={handleShare}
+          />
+        </div>
+      );
+    }
+
   return (
+
+
     <div className='container'>
       <div className='service-item'>
         {services.map((service) => (
@@ -203,12 +239,17 @@ export default function Budget () {
             extraPage={filteredQuoteSorted.extraPage}
             extraLanguage={filteredQuoteSorted.extraLanguage}
             total={filteredQuoteSorted.total}
-            date={filteredQuoteSorted.date}    
+            date={filteredQuoteSorted.date}
+            quote={filteredQuoteSorted}
+            onShare={handleShare}  
           />
         ))}
       </div>
     </div>       
   );
 }
+
+
+
 
 
