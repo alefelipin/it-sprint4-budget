@@ -41,7 +41,7 @@ export default function Budget () {
   
   const extraPagePrice = 30;
   const extraLanguagePrice = 30;
-  const noCostPages = 1;
+  const noCostPages = 0;
   const noCostLanguages = 0;
 
   const total = services.reduce((accum, service) => {
